@@ -38,35 +38,19 @@ No dependencies beyond the standard library, except `prime.py` which uses `pycry
 ```bash
 git clone https://github.com/Abhrankan-Chakrabarti/number-theory.git
 cd number-theory
-pip install -r requirements.txt
+pip install -e .
 ```
 
-`requirements.txt`:
-```
-pycryptodome
-```
+This installs the `number_theory` package in editable mode along with its one dependency, `pycryptodome`.
 
 ---
 
 ## Usage
 
-Each module can be run standalone or imported.
-
-```bash
-python bernoulli.py     # prints B(0) through B(60)
-python prime.py         # prompts for n, checks primality
-python nextPrime.py     # prompts for a prime, finds the next one
-python zeta.py          # prompts for n, prints ζ(n)
-python piprime.py       # prompts for n and iteration count, approximates π
-```
+Import the public API directly from the package:
 
 ```python
-from B import B
-from E import E
-from zeta import zeta
-from prime import isPrime
-from nextPrime import NP
-from piprime import piprime
+from number_theory import B, E, zeta, isPrime, NP, piprime
 
 B(10)              # Fraction(5, 66)
 E(4)               # 5
@@ -76,16 +60,28 @@ NP(97)             # 101
 piprime(2, 1000)   # ≈ 3.14157...
 ```
 
+Each module can also be run standalone via `python -m`:
+
+```bash
+python -m number_theory.bernoulli   # prints B(0) through B(60)
+python -m number_theory.prime       # prompts for n, checks primality
+python -m number_theory.nextPrime   # prompts for a prime, finds the next one
+python -m number_theory.zeta        # prompts for n, prints ζ(n)
+python -m number_theory.piprime     # prompts for n and iteration count, approximates π
+```
+
 ---
 
 ## How It Fits Together
 
 ```
-piprime.py
-├── nextPrime.py → prime.py → Crypto.Util.number (Miller-Rabin)
-└── zeta.py
-    ├── B.py → bernoulli.py   (exact Bernoulli numbers via Fraction)
-    └── E.py → zigzag.py      (Euler zigzag numbers via DP table)
+number_theory/
+├── __init__.py    (exposes the public API)
+├── piprime.py
+│   ├── nextPrime.py → prime.py → Crypto.Util.number (Miller-Rabin)
+│   └── zeta.py
+│       ├── B.py → bernoulli.py   (exact Bernoulli numbers via Fraction)
+│       └── E.py → zigzag.py      (Euler zigzag numbers via DP table)
 ```
 
 **Bernoulli numbers** (`bernoulli.py`) are generated with the Akiyama–Tanigawa-style triangle algorithm, yielding exact `Fraction` values lazily — no floating-point error, no recomputation from scratch for each index.

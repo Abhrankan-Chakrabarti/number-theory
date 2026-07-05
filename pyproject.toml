@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "number-theory"
+version = "2.0.0"
+description = "Exact number theory in Python — Bernoulli numbers, Euler zigzag numbers, closed-form zeta(n), and an Euler-product approximation of pi from primes."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+authors = [
+    { name = "Abhrankan Chakrabarti" }
+]
+dependencies = [
+    "pycryptodome"
+]
+
+[project.urls]
+Repository = "https://github.com/Abhrankan-Chakrabarti/number-theory"
+
+[tool.setuptools.packages.find]
+include = ["number_theory*"]
