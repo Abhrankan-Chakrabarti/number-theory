@@ -19,5 +19,5 @@ from .bernoulli import bernoulli
 from .zigzag import zigzag
 
 __all__ = ["B", "E", "zeta", "isPrime", "NP", "piprime", "bernoulli", "zigzag"]
-__version__ = "2.0.0"
+__version__ = "2.0.1"
 

@@ -1,5 +1,5 @@
-from nextPrime import NP
-from zeta import zeta
+from .nextPrime import NP
+from .zeta import zeta
 def piprime(n, iters):
     t, p = 1, 2
     for i in range(iters):

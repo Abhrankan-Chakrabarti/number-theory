@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "abhrankan-number-theory"
-version = "2.0.0"
+version = "2.0.1"
 description = "Exact number theory in Python — Bernoulli numbers, Euler zigzag numbers, closed-form zeta(n), and an Euler-product approximation of pi from primes."
 readme = "README.md"
 license = { text = "MIT" }

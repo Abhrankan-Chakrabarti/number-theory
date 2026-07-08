@@ -1,4 +1,4 @@
-from prime import isPrime
+from .prime import isPrime
 def NP(n):
 	if n in (2, 3):
 		return 2 * n - 1

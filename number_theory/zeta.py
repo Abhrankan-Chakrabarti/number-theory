@@ -1,5 +1,5 @@
-from B import B
-from E import E
+from .B import B
+from .E import E
 from fractions import Fraction as Fr
 from math import factorial
 
